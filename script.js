@@ -1,6 +1,42 @@
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('#main'),
+    smooth: true
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+// Using Locomotive Scroll from Locomotive https://github.com/locomotivemtl/locomotive-scroll
+
+const locoScroll = new LocomotiveScroll({
+  el: document.querySelector("#main"),
+  smooth: true
+});
+// each time Locomotive Scroll updates, tell ScrollTrigger to update too (sync positioning)
+locoScroll.on("scroll", ScrollTrigger.update);
+
+// tell ScrollTrigger to use these proxy methods for the "#main" element since Locomotive Scroll is hijacking things
+ScrollTrigger.scrollerProxy("#main", {
+  scrollTop(value) {
+    return arguments.length ? locoScroll.scrollTo(value, 0, 0) : locoScroll.scroll.instance.scroll.y;
+  }, // we don't have to define a scrollLeft because we're only scrolling vertically.
+  getBoundingClientRect() {
+    return {top: 0, left: 0, width: window.innerWidth, height: window.innerHeight};
+  },
+  // LocomotiveScroll handles things completely differently on mobile devices - it doesn't even transform the container at all! So to get the correct behavior and avoid jitters, we should pin things with position: fixed on mobile. We sense it by checking to see if there's a transform applied to the container (the LocomotiveScroll-controlled element).
+  pinType: document.querySelector("#main").style.transform ? "transform" : "fixed"
+});
+
+
+// each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll. 
+ScrollTrigger.addEventListener("refresh", () => locoScroll.update());
+
+// after everything is set up, refresh() ScrollTrigger and update LocomotiveScroll because padding may have been added for pinning, etc.
+ScrollTrigger.refresh();
+
+
 function page1Animation(){
     var tl = gsap.timeline()
-    let profileWidth = window.innerWidth <= 768 ? "70vw" : "15vw";
+    // let profileWidth = window.innerWidth <= 768 ? "70vw" : "15vw";
 
 tl.from('#nav-left', {
     y: -30,
@@ -34,18 +70,23 @@ tl.from('#hero-bottom', {
     opacity: 0,
     x: 12,
 })
-tl.to('#page1 #profile-photo', {
-    width: profileWidth,
-    // scrollTrigger: {
-    //     trigger: "#page1",
-    //     scroller: "body",
-    //     markers: true,
-    //     start: "top 0",
-    //     end : "top -100%",
-    //     scrub: 2,
-    //     pin : true
-    // }
-});
+tl.to('#page1 #profile-photo',{
+    width: "30vh",
+})
+// tl.to('#page1 #profile-photo', {
+//     width: profileWidth,
+//     opacity: 1,
+//     y: 15,
+//     // scrollTrigger: {
+//     //     trigger: "#page1",
+//     //     scroller: "body",
+//     //     markers: true,
+//     //     start: "top 0",
+//     //     end : "top -100%",
+//     //     scrub: 2,
+//     //     pin : true
+//     // }
+// });
 
 
 }
@@ -57,7 +98,7 @@ function page2Animation(){
     duration: 1,
     scrollTrigger: {
         trigger: "#assets #assets-top",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -70,7 +111,7 @@ gsap.from('#assets #assets-heading',{
     duration: 1,
     scrollTrigger: {
         trigger: "#assets #assets-heading",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -82,7 +123,7 @@ gsap.from('#assets .assets-photo',{
     opacity: 0,
     scrollTrigger: {
         trigger: "#assets .assets-photo",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -100,7 +141,7 @@ function page3Animation(){
     opacity: 0,
     scrollTrigger: {
         trigger: "#banner .div",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -112,7 +153,7 @@ gsap.from('#banner .slogan',{
     opacity: 0,
     scrollTrigger: {
         trigger: "#banner .slogan",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -124,7 +165,7 @@ gsap.to('#banner .banner-video',{
     width: "70%",
       scrollTrigger: {
         trigger: "#banner",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 0%",
         end: "top -100%",
@@ -139,8 +180,9 @@ gsap.from('.banner-bottom h1', {
     duration: 2,
     scrollTrigger: {
         trigger: ".banner-bottom",
-        scroller: "body",
-        start: "top 0%",
+        scroller: "#main",
+        // markers: true,
+        start: "top 60%",
         end: "top -100%",
         scrub: 2
     }
@@ -153,7 +195,7 @@ gsap.from('.story-text h5',{
     duration: 2,
     scrollTrigger: {
         trigger: ".story-text h5",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 60%",
         end: "top 30%",
@@ -173,7 +215,7 @@ tl1.from('#photo-collage #box2',{
     duration: 1,
     scrollTrigger: {
         trigger: "#photo-collage ",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 70%",
         end: "bottom 30%",
@@ -186,7 +228,7 @@ tl1.from('#photo-collage #box4',{
     duration: 1,
     scrollTrigger: {
         trigger: "#photo-collage",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 70%",
         end: "bottom 30%",
@@ -199,7 +241,7 @@ tl1.from('#photo-collage #box6',{
     duration: 2,
     scrollTrigger: {
         trigger: "#photo-collage",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 40%",
         end: "bottom 30%",
@@ -212,7 +254,7 @@ tl1.from('#photo-collage #box8',{
     duration: 2.35,
     scrollTrigger: {
         trigger: "#photo-collage",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 50%",
         end: "bottom 30%",
@@ -225,13 +267,14 @@ tl1.from('#photo-collage #box10',{
     duration: 2,
     scrollTrigger: {
         trigger: "#photo-collage",
-        scroller: "body",
+        scroller: "#main",
         // markers: true,
         start: "top 50%",
         end: "bottom 30%",
         scrub: 3,
     }
 })
+
 
 }
 

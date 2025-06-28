@@ -1,22 +1,22 @@
 @font-face {
     font-family: 'Creato Display';
-    src: url(./assets/CreatoDisplay-Regular.otf);
+    src: url(./fonts/CreatoDisplay-Regular.woff2);
 }
 @font-face {
     font-family: 'Creato Bold';
-    src: url(./assets/CreatoDisplay-Medium.otf);
+    src: url(./fonts/CreatoDisplay-Medium.woff2);
 }
 @font-face {
     font-family: 'relation';
-    src: url(./assets/Relationship\ of\ mélodrame.ttf);
+    src: url(./fonts/Relationship\ of\ mélodrame.woff2);
 }
 @font-face {
     font-family: 'Magilo';
-    src: url(./assets/Magioline.ttf);
+    src: url(./fonts/Magioline.woff2);
 }
 @font-face {
     font-family: 'lemon';
-    src: url(./assets/LEMONMILK-Regular.otf);
+    src: url(./fonts/LEMONMILK-Regular.woff2);
 }
 
 *{
@@ -32,9 +32,15 @@ html, body{
 }
 
 #main{
-    position: relative;
-    overflow-x: hidden;
+    width: 100%;
     
+}
+
+#page1{
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden; 
+    position: relative;
 }
 
 #nav{
@@ -141,23 +147,22 @@ html, body{
 }
 
 #profile-photo{
-    margin-top: 20%;
-    position: absolute;
-    left: 50%;
-    /* top: 50%; */
-    transform: translate(-50%, -50%);
+    /* margin-top: 20%; */
+    position: relative;
+    left: 0%;
+    /* transform: translateX(-50%); */
     height: 40vh;
     width: 0vw;
+    overflow: hidden;
     /* background-image: url(./assets/Profile-2.webp); */
-    background-position: center;
-    background-size: cover;
-    border-radius: 20px;
+    /* background-position: center;
+    background-size: cover; */
+    border-radius: 2px;
 }
 #profile-photo img{
     object-fit: cover;
     height: 100%;
     width: 100%;
-    opacity: 1;
 }
 
 /* #profile-photo img:hover{
@@ -245,6 +250,11 @@ h2::selection{
     }
 }
 
+#page2{
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
 #assets{
     height: 100vh;
     width: 100%;
@@ -261,7 +271,7 @@ h2::selection{
     font-size: 1vw;
 }
 #assets-center{
-    margin-top: 7vw;
+    margin-top: 2vh;
     padding: 0px 0px;
 }
 #assets-heading{ 
@@ -310,10 +320,18 @@ h2::selection{
     padding-top: 5px;
     font-size: 0.7vw;
 }
-#banner{
-    /* height: 100vh; */
+
+#page3{
+    height: 100vh;
     width: 100%;
     position: relative;
+}
+#banner{
+    /* height: 100%;
+    width: 100%; */
+    margin-top: 0vh;
+    position: relative;
+    overflow-x: hidden; 
     
 }
 .div{
@@ -358,40 +376,43 @@ h2::selection{
     
 }
 .banner-video{
-    height: 30%;
+    height: 20vh;
     width: 0%;
     position: absolute;
-    top: 30%;
+    top: 29%;
     /* left: 15%; */
     left: 50%;
     transform: translateX(-50%);
 }
-.banner-video video{
-    height: 100%;
-    width: 100%;
-    /* border-radius: 10px; */
-    object-fit: cover;
-}
+
 .banner-bottom{
-    display: flex;
     width: 100%;
     /* background-color: rgb(140, 65, 65); */
     overflow: hidden;
     flex-wrap: nowrap;
     flex-shrink: 0;
     position: relative;
-    margin-top: 5vw;
+    margin-bottom: 20vh;
+    /* z-index: 9999; */
 
 }
 .banner-bottom h1{
-    font-size: 40vw;
+    font-size: 35vw;
     font-family: 'Relation';
     letter-spacing: 0vw;
     font-weight: 300;
     position: relative;
     text-transform: uppercase;
-    left: -50vw;
-    top: 19vw;
+    left: -30vw;
+    top: 8vw;
+}
+
+#page4{
+    height: 100vh;
+    width: 100%;
+    margin-top: 25vh;
+    background-color: #000000;
+    position: relative;
 }
 #stories{
     color: #EEEEEE;
@@ -419,11 +440,12 @@ h2::selection{
 }
 #photo-collage{
     padding: 2vw 0;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-wrap: wrap;
     gap: 1vw;
-    justify-content: center;
+    position: relative;
+    /* justify-content: center; */
    
 }
 .photo-collage2{
@@ -433,7 +455,7 @@ h2::selection{
 .box{
     height: 350px;
     width: 350px;
-  
+    /* flex-shrink: 0; Shrink hone se roke   */
 }
 .box img{
     height: 100%;
@@ -450,7 +472,7 @@ h2::selection{
 
 
 #footer{
-    /* height: 100%; */
+    margin-top: 39vh;
     width: 100%;
     background-color: #000000;
     padding: 5vw 30px;
@@ -464,6 +486,7 @@ h2::selection{
 }
 .footer-title h1{
     font-family: 'Creato Bold';
+    color: #EEEEEE;
     font-size: 4vw;
     font-weight: 300
 }
