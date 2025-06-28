@@ -36,7 +36,7 @@ ScrollTrigger.refresh();
 
 function page1Animation(){
     var tl = gsap.timeline()
-    // let profileWidth = window.innerWidth <= 768 ? "70vw" : "15vw";
+    let profileWidth = window.innerWidth <= 768 ? "70vw" : "15vw";
 
 tl.from('#nav-left', {
     y: -30,
@@ -134,7 +134,7 @@ gsap.from('#assets .assets-photo',{
 
 function page3Animation(){
 
-    let xValue = window.innerWidth <= 768 ? 200 : 800;
+    let xValue = window.innerWidth <= 768 ? 100 : 800;
 
     gsap.from('#banner .div',{
     scale: 5,

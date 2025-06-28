@@ -584,16 +584,19 @@ h2::selection{
         text-transform: capitalize;
     }
     #profile-photo{
-    top: 37%;
-    left: 50%;
-    /* top: 50%; */
-    transform: translate(-50%, -50%);
+    top: 0%;
+    left: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* top: 50%;
+    transform: translateX(-50%); */
     height: 40vh;
     width: 0vw;
     /* background-image: url(./assets/Profile-2.webp); */
     background-position: center;
     background-size: cover;
-    border-radius: 20px;
+    border-radius: 2px;
 }
 
 
@@ -701,13 +704,13 @@ h2::selection{
     height: 30%;
     width: 0%;
     position: absolute;
-    top: 40%;
+    top: 50vh;
     /* left: 15%; */
     left: 50%;
     transform: translateX(-50%);
 }
     .banner-bottom{
-        margin-top: 35vh;
+        margin-top: 60vh;
     }
 
     .div{
@@ -797,7 +800,8 @@ h2::selection{
 }
 #footer-content i{
     color: #EEEEEE;
-    font-size: 2.5vw;
+    font-size: 2.2vw;
+    line-height: 1.8vh;
 }
 .social-icon{
     display: flex;
