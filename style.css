@@ -73,6 +73,10 @@ html, body{
     transform: translate(-50%, -50%);
     gap: 2vw;
 }
+a{
+    color: inherit;          /* Ya koi bhi custom color, jaise black */
+    text-decoration: none;
+}
 #nav-center h2{
     font-size: 1.2vw;
     font-weight: 600;

@@ -57,7 +57,10 @@ html, body{
     z-index: 1;
     
 }
-
+a{
+    text-decoration: none;
+    color: inherit;
+}
 #nav-left{
     height: 70px;
     width: 70px;
@@ -116,12 +119,13 @@ html, body{
     font-size: 1vw;
     font-weight: 600;
 }
+
 #menu{
     display: none;
-
 }
-#menu h2{
+#menu i{
     font-size: 1.3vw;
+    color: #000000;
    
 }
 
@@ -144,52 +148,212 @@ html, body{
     gap: 1vw;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20VH;
 }
 #poster1{
     height: 300px;
     width: 200px;
-    background-color: blue;
 }
 #poster1 img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 #poster2{
     height: 350px;
     width: 250px;
-    background-color: orchid;
 }
 #poster2 img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 #poster3{
     height: 400px;
     width: 290px;
-    background-color: rgb(51, 255, 0);
+}
+#poster3 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 #poster4{
     height: 400px;
     width: 290px;
-    background-color: rgb(59, 9, 57);
+}
+#poster4 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 #poster5{
     height: 350px;
     width: 250px;
-    background-color: rgb(182, 92, 50);
+}
+#poster5 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 #poster6{
     height: 300px;
     width: 200px;
-    background-color: rgb(139, 30, 202);
+}
+#poster6 img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3); /* shadow below only */
 }
 
-#page2{
-    height: 100vh;
+#footer{
     width: 100%;
-    background-color: red;
+    background-color: #000000;
+    padding: 5vw 30px;
+}
+
+.footer-title{
+    color: #EEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.footer-title h1{
+    font-family: 'Creato Bold';
+    color: #EEEEEE;
+    font-size: 4vw;
+    font-weight: 300
+}
+.footer-title h3{
+    font-size: 1.5vw;
+    font-weight: 300;
+}
+
+#footer-content{
+    padding: 5vw 30px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #EEEEEE;
+}
+#footer-content h5{
+    position: relative;
+    font-weight: 300;
+    font-size: 0.8vw;
+    cursor: pointer;
+    line-height: 1.vw;
+}
+#footer-content h5::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px; /* You can adjust thickness */
+    width: 0;
+    background-color: #EEEEEE; /* Change color if needed */
+    transition: width 0.3s ease-in-out;
+}
+#footer-content h5:hover::after {
+    width: 100%;
+}
+#footer-content i{
+    color: #EEEEEE;
+    font-size: 0.8vw;
+}
+.social-icon{
+    display: flex;
+    flex-direction: column;
+}
+
+@media  (max-width: 600px) {
+
+
+    
+    #nav-center{
+    display: none;
+    }
+    #nav-right{
+        display: none;
+    }
+
+    #menu{
+        display: block;
+    }
+    #menu i{
+        font-size: 7vw;
+    }
+    #title{
+        width: 100%;
+    }
+    #title h1{
+        font-size: 4vw;
+    }
+    #posters{
+        padding: 30px 100px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* adjust 150px as per poster size */
+        grid-auto-rows: auto;
+        gap: 2vw;
+        justify-items: center; /* center each poster */
+        align-items: center;
+        max-height: calc(2 * 250px + 2vw); /* optional: limit to 2 rows visually */
+        overflow-y: auto; /* scroll if needed */
+    }
+    #poster1{
+        height: 300px;
+        width: 200px;
+    }
+    #poster2{
+        height: 300px;
+        width: 200px;
+    }
+    #poster3{
+        height: 300px;
+        width: 200px;
+    }
+    #poster4{
+        height: 300px;
+        width: 200px;
+    }
+    #poster5{
+        height: 300px;
+        width: 200px;
+    }
+    #poster6{
+        height: 300px;
+        width: 200px;
+    }
+    #footer{
+        margin-top: 5vh; 
+        padding: 40px 15px; 
+    }   
+    .footer-title h1{
+        font-size: 7vw;
+    }
+    .footer-title h3{
+        font-size: 3vw;
+    }
+    #footer-content h5{
+        position: relative;
+        font-weight: 300;
+        font-size: 3vw;
+        cursor: pointer;
+        line-height: 1.vw;
+    }
+    #footer-content i{
+        font-size: 3vw;
+    }
+
+
 }

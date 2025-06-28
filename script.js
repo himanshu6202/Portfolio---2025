@@ -89,6 +89,7 @@ tl.to('#page1 #profile-photo',{
 // });
 
 
+
 }
 
 function page2Animation(){
@@ -277,6 +278,7 @@ tl1.from('#photo-collage #box10',{
 
 
 }
+
 
 
 
